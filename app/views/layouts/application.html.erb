@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LocationBook</title>
+    <title>Location Books</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class ="d-flex flex-column vh-100">
+
+    <header class ="border-bottom">
+      <nav class ="navbar navbar-expand-lg navbar-light">
+        <div class ="container">
+          <div class ="navbar-brand"><!--ロゴの挿入--></div>
+          <button class ="navbar-toggler" type ="bottom" data-toggle ="collapse" data-target ="#navbarNavDropdown" aria-controls ="navbarNavDropdown" aria-expanded ="false" aria-label ="Toggle navigation">
+            <span class ="navbar-toggler-icon"></span>
+          </button>
+          <div class ="collapse navbar-collapse" id ="navbarNavDropdown">
+            <ul class ="navbar-nav ml-auto">
+            <!--管理者がログインしているとき-->
+            <% if admin_signed_in? %>
+             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
+             <li class ="nav-item">会員一覧</li>
+             <li class ="nav-item">投稿一覧</li>
+             <li class ="nav-item">コメント一覧</li>
+             <li class ="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+
+            <!--ユーザーがログインしているとき-->
+            <% elsif user_signed_in? %>
+             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
+             <li class ="nav-item">マイページ</li>
+             <li class ="nav-item">ロケ地一覧</li>
+             <li class ="nav-item">新規投稿</li>
+             <li class ="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+
+            <!--ログインしていないとき-->
+            <% else %>
+             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
+             <li class ="nav-item"><%= link_to 'About', about_path, class: 'nav-link text-dark' %></li>
+             <li class ="nav-item">ロケ地一覧</li>
+             <li class ="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %></li>
+             <li class ="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %></li>
+            <% end %>
+    </header>
+
+    <main>
+     <%= yield %>
+    </main>
+
+    <footer></footer>
+
   </body>
 </html>
