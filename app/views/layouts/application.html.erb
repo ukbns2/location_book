@@ -33,7 +33,7 @@
             <!--ユーザーがログインしているとき-->
             <% elsif user_signed_in? %>
              <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
-             <li class ="nav-item">マイページ</li>
+             <li class ="nav-item"><%= link_to 'マイページ', users_my_page_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item">ロケ地一覧</li>
              <li class ="nav-item">新規投稿</li>
              <li class ="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
