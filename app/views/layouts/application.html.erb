@@ -16,7 +16,11 @@
     <header class ="border-bottom">
       <nav class ="navbar navbar-expand-lg navbar-light">
         <div class ="container">
-          <div class ="navbar-brand"><!--ロゴの挿入--></div>
+          <div class ="navbar-brand">
+            <%= link_to root_path do %>
+            <%= image_tag 'IMG_8607.jpg', size: "350x80" %>
+            <% end %>
+          </div>
           <button class ="navbar-toggler" type ="bottom" data-toggle ="collapse" data-target ="#navbarNavDropdown" aria-controls ="navbarNavDropdown" aria-expanded ="false" aria-label ="Toggle navigation">
             <span class ="navbar-toggler-icon"></span>
           </button>
@@ -24,7 +28,6 @@
             <ul class ="navbar-nav ml-auto">
             <!--管理者がログインしているとき-->
             <% if admin_signed_in? %>
-             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
              <li class ="nav-item">会員一覧</li>
              <li class ="nav-item">投稿一覧</li>
              <li class ="nav-item">コメント一覧</li>
@@ -32,7 +35,6 @@
 
             <!--ユーザーがログインしているとき-->
             <% elsif user_signed_in? %>
-             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
              <li class ="nav-item"><%= link_to 'マイページ', users_my_page_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item">ロケ地一覧</li>
              <li class ="nav-item">新規投稿</li>
@@ -40,12 +42,15 @@
 
             <!--ログインしていないとき-->
             <% else %>
-             <!--ロゴクリックでトップページに飛べるように設定する記述を記入予定-->
              <li class ="nav-item"><%= link_to 'About', about_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item">ロケ地一覧</li>
              <li class ="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %></li>
             <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
