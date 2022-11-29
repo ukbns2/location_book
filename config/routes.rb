@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     get 'users/detain' => 'users#detain'
     patch 'users/out' => 'users#out'
   end
-  
+
   namespace :admin do
-    resources :users
+    get '/' => 'homes#top'
+    resources :users, only: [:index, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
