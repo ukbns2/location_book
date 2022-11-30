@@ -4,19 +4,19 @@
 
   <table class ="table table-borderless mt-3">
     <tr>
-      <th class ="col-lg-2">ユーザーID</th>
+      <th class ="col-lg-3">ユーザーID</th>
       <th><%= @user.id %></th>
     </tr>
     <tr>
-      <th class ="col-lg-2">ユーザーネーム</th>
+      <th class ="col-lg-3">ユーザーネーム</th>
       <th><%= @user.name %></th>
     </tr>
     <tr>
-      <th class ="col-lg-2">メールアドレス</th>
+      <th class ="col-lg-3">メールアドレス</th>
       <th><%= @user.email %></th>
     </tr>
     <tr>
-      <th class ="col-lg-2">会員ステータス</th>
+      <th class ="col-lg-3">ユーザーステータス</th>
       <th>
         <% if @user.is_deleted %>
          <p class ="text-secondary">退会</p>
