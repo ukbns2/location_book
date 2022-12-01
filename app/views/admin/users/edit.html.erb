@@ -10,32 +10,6 @@
     </div>
     <div class ="field">
       <%= f.label :ユーザーネーム, class: "col-lg-3" %>
-      <%= @user.name %>
-    </div>
-    <div class ="field">
-      <%= f.label :メールアドレス, class: "col-lg-3" %>
-      <%= @user.email %>
-    </div>
-    <div class ="field">
-      <%= f.label :ユーザーステータス, class: "col-lg-3" %>
-      <%= f.radio_button :is_deleted, 0, checked: "checked" %>
-      <%= f.label :is_deleted, "有効" %>
-      <%= f.radio_button :is_deleted, 1 %>
-      <%= f.label :is_deleted, "退会" %>
-    </div>
-     <%= f.submit "変更を保存", class: 'btn btn-success offset-lg-3 mt-2' %>
-
-    <% end %>
-  </div>
-
-  <div class ="mt-4">
-    <%= form_with model: @user, url: admin_user_path, local: true do |f| %>
-    <div class ="field">
-      <%= f.label :ユーザーID, 'ユーザーID', class: "col-lg-3" %>
-      <%= @user.id %>
-    </div>
-    <div class ="field">
-      <%= f.label :ユーザーネーム, class: "col-lg-3" %>
       <%= f.text_field :name %>
     </div>
     <div class ="field">
@@ -44,11 +18,11 @@
     </div>
     <div class ="field">
       <%= f.label :ユーザーステータス, class: "col-lg-3" %>
-      <%= f.radio_button :is_deleted, 0, checked: "checked" %>
-      <%= f.label :is_deleted, "有効" %>
-      <%= f.radio_button :is_deleted, 1 %>
-      <%= f.label :is_deleted, "退会" %>
+      <label><%= f.radio_button :is_deleted, "有効", checked: "checked" %>有効　</label>
+      <label><%= f.radio_button :is_deleted, "退会" %>退会</label>
     </div>
+
+
      <%= f.submit "変更を保存", class: 'btn btn-success offset-lg-3 mt-2' %>
 
     <% end %>
