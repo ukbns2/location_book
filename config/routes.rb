@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     patch 'users/information' => 'users#update'
     get 'users/detain' => 'users#detain'
     patch 'users/out' => 'users#out'
+    resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
 
   namespace :admin do
