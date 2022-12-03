@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts
 
 
   # 退会済みのユーザーが同じアカウントでログインできないように制約
