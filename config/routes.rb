@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
 
 
+  namespace :public do
+    get 'posts/new'
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/edit'
+  end
    #顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
