@@ -18,8 +18,10 @@
     </div>
     <div class ="field">
       <%= f.label :ユーザーステータス, class: "col-lg-3" %>
-      <label><%= f.radio_button :is_deleted, "有効", checked: "checked" %>有効　</label>
-      <label><%= f.radio_button :is_deleted, "退会" %>退会</label>
+      <%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効" %>
+      <%= f.radio_button :is_deleted, true %>
+      <%= f.label :is_deleted, "退会" %>
     </div>
 
 
