@@ -1,2 +1,40 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+
+<div class ="container">
+ <h2 class ="mt-3">投稿詳細</h2>
+ <div class ="row">
+   <div class ="col-lg-5 mt-4">
+   </div>
+
+   <div class ="col-lg-7 mt-4">
+    <table class ="table table-borderless">
+      <tr>
+       <th class ="col-lg-3">タイトル</th>
+       <th><%= @post.title %></th>
+      </tr>
+      <tr>
+       <th class ="col-lg-3">概要</th>
+       <th><%= @post.body %></th>
+      </tr>
+      <tr>
+       <th class ="col-lg-3">タグ</th>
+       <th>
+       </th>
+      </tr>
+      <tr>
+       <th class ="col-lg-3">評価</th>
+       <th></th>
+      </tr>
+      <tr>
+       <th class ="col-lg-3">郵便番号</th>
+       <th><%= @post.postal_code %></th>
+      </tr>
+      <tr>
+       <th class ="col-lg-3">住所</th>
+       <th><%= @post.address %></th>
+      </tr>
+    </table>
+    <div><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-lg-2" %></div>
+   </div>
+
+ </div>
+</div>

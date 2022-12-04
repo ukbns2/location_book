@@ -24,6 +24,10 @@
       <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
      </div>
      <div class ="field">
+      <%= f.label :body, "概要", class: "col-lg-3 offset-lg-1" %>
+      <%= f.text_area :body %>
+     </div>
+     <div class ="field">
       <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-lg-3 offset-lg-1" %>
       <%= f.text_field :postal_code, autocomplete: "postal_code" %>
      </div>
@@ -35,14 +39,10 @@
       <%= f.label "タグ", class: "col-lg-3 offset-lg-1" %>
       <%= f.text_field :tag_name, autocomplete: "tag_name" %>
      </div>
+
      <div class ="field" id="star">
       <%= f.label :rate, "評価", class: "col-lg-3 offset-lg-1" %>
       <%= f.hidden_field :rate, id: :review_star %>
-     </div>
-
-     <div class ="field">
-      <%= f.label :body, "ひとこと(説明)", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_area :body %>
      </div>
 
      <div class ="actions">
