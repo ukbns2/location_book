@@ -36,8 +36,8 @@
       <%= f.text_field :address, autocomplete: "address" %>
      </div>
      <div class ="field">
-      <%= f.label "タグ", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_field :tag_name, autocomplete: "tag_name" %>
+      <%= f.label "タグ (,で区切ると複数タグ登録できます)", class: "col-lg-3 offset-lg-1" %>
+      <%= f.text_field :tag_name, value: @post.tags.pluck(:name), autocomplete: "tag_name" %>
      </div>
 
      <div class ="field" id="star">
@@ -46,7 +46,7 @@
      </div>
 
      <div class ="actions">
-      <%= f.submit "新規投稿", class: "btn btn-success offset-lg-4" %>
+      <%= f.submit "投稿", class: "btn btn-success offset-lg-4" %>
      </div>
     <% end %>
 

@@ -36,14 +36,14 @@
             <!--ユーザーがログインしているとき-->
             <% elsif user_signed_in? %>
              <li class ="nav-item"><%= link_to 'マイページ', users_my_page_path, class: 'nav-link text-dark' %></li>
-             <li class ="nav-item">ロケ地一覧</li>
-             <li class ="nav-item">新規投稿</li>
+             <li class ="nav-item"><%= link_to 'ロケ地一覧', posts_path, class: 'nav-link text-dark' %></li>
+             <li class ="nav-item"><%= link_to '新規投稿', new_post_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %></li>
 
             <!--ログインしていないとき-->
             <% else %>
              <li class ="nav-item"><%= link_to 'About', about_path, class: 'nav-link text-dark' %></li>
-             <li class ="nav-item">ロケ地一覧</li>
+             <li class ="nav-item"><%= link_to 'ロケ地一覧', posts_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item"><%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark' %></li>
              <li class ="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark' %></li>
             <% end %>
