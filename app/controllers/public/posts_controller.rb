@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:name].split(', ')
+    tag_list = params[:post][:tag_name].split(', ')
     if @post.save
       @post.save_tag(tag_list)
       redirect_to post_path(@post.id)
@@ -26,10 +26,21 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    
   end
+
+  def update
+    @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(', ')
+    if @post.update(post_params)
+      @post.save_tag(tag_list)
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
 
   private
   def post_params
-    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :tag_name)
+    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address)
   end
 end
