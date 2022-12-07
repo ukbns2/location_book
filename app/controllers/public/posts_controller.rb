@@ -26,18 +26,26 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(', ')
   end
 
   def update
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(', ')
     if @post.update(post_params)
+      # このpost_idに紐づいてタグを@oldに入れる
+      @old_relations = PostTag.where(post_id: @post.id)
+      # それらを取り出し、消す。消し終わる。
+      @old_relations.each do |relation|
+        relation.delete
+      end
       @post.save_tag(tag_list)
       redirect_to post_path(@post.id)
     else
       render :edit
     end
+  end
 
   private
   def post_params
