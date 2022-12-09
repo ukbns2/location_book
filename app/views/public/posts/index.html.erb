@@ -3,10 +3,14 @@
 
 <div class ="container">
  <h2 class ="mt-3">投稿一覧</h2>
- <div class ="row">
+ <div>
    <% @posts.each do |post| %>
-   <div class ="col-lg-3">
-　　写真
+   <div>
+    <% if post.image.attached? %>
+     <%= image_tag post.image, size: "150x150" %>
+    <% else %>
+     <%= image_tag 'no-image', size: "150x150" %>
+    <% end %>
    </div>
    <div><%= post.title %></div>
    <div><%= post.address %></div>
