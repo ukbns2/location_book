@@ -20,6 +20,10 @@ class Public::PostsController < ApplicationController
     @tag_list = Tag.all
   end
 
+  def my_index
+    @posts = current_user.posts.page(params[:page]).per(10)
+  end
+
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
