@@ -42,7 +42,9 @@
        <th><%= @post.address %></th>
       </tr>
     </table>
-    <div><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-lg-2" %></div>
+    <div>
+     <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-lg-1" %>
+     <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %></div>
    </div>
 
  </div>

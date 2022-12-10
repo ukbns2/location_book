@@ -12,7 +12,11 @@
      <%= image_tag 'no-image', size: "150x150" %>
     <% end %>
    </div>
-   <div><%= post.title %></div>
+   <div>
+    <%= link_to post_path(post.id) do %>
+     <%= post.title %>
+    <% end %>
+   </div>
    <div><%= post.address %></div>
    <div><%= post.tags.map(&:name).join(', ') %></div>
    <div>評価</div>
