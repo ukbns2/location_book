@@ -43,8 +43,11 @@
       </tr>
     </table>
     <div>
-     <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-lg-1" %>
-     <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %></div>
+     <% if @post.user == current_user %>
+      <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-lg-1" %>
+      <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %>
+     <% end %>
+    </div>
    </div>
 
  </div>
