@@ -2,7 +2,7 @@
 <div class ="container">
  <h2 class ="mt-3">ロケ地一覧</h2>
  <div>
-   <% @posts.each do |post| %>
+  <% @posts.each do |post| %>
    <div>
     <% if post.image.attached? %>
      <%= image_tag post.image, size: "150x150" %>
@@ -17,8 +17,8 @@
    </div>
    <div><%= post.address %></div>
    <div><%= post.tags.map(&:name).join(', ') %></div>
-   <div>評価</div>
-   <% end %>
+   <div><span id ="index_star"></span></div>
+  <% end %>
  </div>
 
  <div class ="row justify-content-center mt-3">
@@ -26,3 +26,4 @@
  </div>
 
 </div>
+

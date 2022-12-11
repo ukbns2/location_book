@@ -42,9 +42,7 @@
 
      <div class ="field">
       <%= f.label :rate, "評価", class: "col-lg-3 offset-lg-1" %>
-      <span id ="review_star">
-       <%= f.hidden_field :rate %>
-      </span>
+      <span id ="review_star"></span>
      </div>
 
      <div class ="actions">
@@ -64,6 +62,8 @@
        var opt = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        half: true,
         scoreName: "post[rate]"
          //星画像の指定などのオプションをここに記述,
         };
