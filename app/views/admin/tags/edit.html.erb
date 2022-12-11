@@ -5,10 +5,18 @@
   <div class ="mt-5">
     <%= form_with model: @tag, url: admin_tag_path(@tag.id), method: :patch do |f| %>
      <div class ="field">
-       <%= f.label :name, "タグ名　" %>
+       <%= f.label :name, "タグ名　　　　" %>
        <%= f.text_field :name %>
-       <%= f.submit '変更を保存', class: "btn btn-success offset-lg-1" %>
      </div>
+     <div class ="field mt-2">
+       <%= f.label :ステータス　　 %>
+       <%= f.radio_button :status, false %>
+       <%= f.label :status, "表示" %>
+       <%= f.radio_button :status, true %>
+       <%= f.label :status, "非表示" %>
+     </div>
+
+       <%= f.submit '変更を保存', class: "btn btn-success offset-lg-2 mt-2" %>
     <% end %>
   </div>
 </div>

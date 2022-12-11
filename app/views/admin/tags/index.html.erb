@@ -17,7 +17,8 @@
       <table class ="table table-inverse">
        <thead class ="thead-light">
         <tr>
-         <th>　　タグ</th>
+         <th>タグ</th>
+         <th>ステータス</th>
          <th colspan ="2"></th>
         </tr>
        </thead>
@@ -25,8 +26,14 @@
         <% @tags.each do |tag| %>
         <tr>
          <td><%= tag.name %></td>
+         <td>
+          <% if tag.status %>
+           <p class ="text-secondary">　非表示</p>
+          <% else %>
+           <p class ="text-info">　表示</p>
+          <% end %>
+         </td>
          <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
-         <td>非表示にする</td>
         </tr>
         <% end %>
        </tbody>
