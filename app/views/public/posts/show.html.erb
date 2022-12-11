@@ -31,7 +31,10 @@
       </tr>
       <tr>
        <th class ="col-lg-3">評価</th>
-       <th></th>
+       <th>
+        <span id ="show_star">
+        </span>
+       </th>
       </tr>
       <tr>
        <th class ="col-lg-3">郵便番号</th>
@@ -52,3 +55,17 @@
 
  </div>
 </div>
+
+<script>
+       var show_elem = document.querySelector('#show_star');
+         // scriptファイルをどのidの部分に配置するかを指定
+       var show_opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        readOnly: true,
+        score: <%= @post.rate %>
+         //星画像の指定などのオプションをここに記述,
+        };
+      raty(show_elem,show_opt);
+        //application.jsの20行目のratyを使用している
+</script>

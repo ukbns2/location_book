@@ -40,13 +40,15 @@
       <%= f.text_field :tag_name, value: @post.tags.pluck(:name), autocomplete: "tag_name" %>
      </div>
 
-     <div class ="field" id="star">
+     <div class ="field">
       <%= f.label :rate, "評価", class: "col-lg-3 offset-lg-1" %>
-      <%= f.hidden_field :rate, id: :review_star %>
+      <span id ="review_star">
+       <%= f.hidden_field :rate %>
+      </span>
      </div>
 
      <div class ="actions">
-      <%= f.submit "投稿", class: "btn btn-success offset-lg-4" %>
+      <%= f.submit "投稿", class: "btn btn-success offset-lg-4 mt-2" %>
      </div>
     <% end %>
 
@@ -55,3 +57,16 @@
 
  </div>
 </div>
+
+<script>
+       var elem = document.querySelector('#review_star');
+         // scriptファイルをどのidの部分に配置するかを指定
+       var opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: "post[rate]"
+         //星画像の指定などのオプションをここに記述,
+        };
+      raty(elem,opt);
+        //application.jsの20行目のratyを使用している
+</script>

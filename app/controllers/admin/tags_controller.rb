@@ -21,9 +21,6 @@ class Admin::TagsController < ApplicationController
     redirect_to admin_tags_path
   end
 
-  def destroy
-  end
-
   private
   def tag_params
     params.require(:tag).permit(:name, :status)
