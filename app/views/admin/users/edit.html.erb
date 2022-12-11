@@ -8,18 +8,18 @@
       <%= f.label :ユーザーID, 'ユーザーID', class: "col-lg-3" %>
       <%= @user.id %>
     </div>
-    <div class ="field">
+    <div class ="field mt-2">
       <%= f.label :ユーザーネーム, class: "col-lg-3" %>
       <%= f.text_field :name %>
     </div>
-    <div class ="field">
+    <div class ="field mt-2">
       <%= f.label :メールアドレス, class: "col-lg-3" %>
       <%= f.text_field :email %>
     </div>
-    <div class ="field">
+    <div class ="field mt-2">
       <%= f.label :ユーザーステータス, class: "col-lg-3" %>
       <%= f.radio_button :is_deleted, false %>
-      <%= f.label :is_deleted, "有効" %>
+      <%= f.label :is_deleted, "有効　" %>
       <%= f.radio_button :is_deleted, true %>
       <%= f.label :is_deleted, "退会" %>
     </div>
