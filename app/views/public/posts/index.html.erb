@@ -17,7 +17,23 @@
    </div>
    <div><%= post.address %></div>
    <div><%= post.tags.map(&:name).join(', ') %></div>
-   <div><span id ="index_star"></span></div>
+   <div><span id ="index_star<%= post.id %>"></span>
+    <script>
+       var index_elem = document.querySelector('#index_star<%= post.id %>');
+       $('#index_star<%= post.id %>').empty();
+         // scriptファイルをどのidの部分に配置するかを指定
+       var index_opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        readOnly: true,
+        score: <%= post.rate %>
+         //星画像の指定などのオプションをここに記述,
+        };
+      raty(index_elem,index_opt);
+        //application.jsの20行目のratyを使用している
+    </script>
+   </div>
   <% end %>
  </div>
 

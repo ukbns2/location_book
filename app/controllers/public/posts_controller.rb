@@ -16,12 +16,12 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.page(params[:page]).per(12)
     @tag_list = Tag.all
   end
 
   def my_index
-    @posts = current_user.posts.page(params[:page]).per(10)
+    @posts = current_user.posts.page(params[:page]).per(12)
   end
 
   def show
