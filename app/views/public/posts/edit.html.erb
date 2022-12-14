@@ -21,11 +21,11 @@
      </div>
      <div class ="field">
       <%= f.label :title, "タイトル", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+      <%= f.text_field :title, autofocus: true, autocomplete: "title", size: "40" %>
      </div>
      <div class ="field">
       <%= f.label :body, "概要", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, size: "40x5" %>
      </div>
      <div class ="field">
       <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-lg-3 offset-lg-1" %>
@@ -33,10 +33,10 @@
      </div>
      <div class ="field">
       <%= f.label :address, "住所", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_field :address, autocomplete: "address" %>
+      <%= f.text_field :address, autocomplete: "address", size: "40" %>
      </div>
      <div class ="field">
-      <%= f.label "タグ (,で区切ると複数タグ登録できます)", class: "col-lg-3 offset-lg-1" %>
+      <%= f.label "タグ", class: "col-lg-3 offset-lg-1" %>
       <%= f.text_field :tag_name, value: @post.tags.pluck(:name), autocomplete: "tag_name" %>
      </div>
 

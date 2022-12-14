@@ -4,6 +4,14 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_one_attached :image
 
+
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :address, presence: true
+  validates :rate, presence: true
+
+
+
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

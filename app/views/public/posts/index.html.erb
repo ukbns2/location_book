@@ -16,7 +16,7 @@
      <%= post.title %>
     <% end %>
    </div>
-   <div><%= post.address %></div>
+   <div><%= post.address.truncate(15) %></div>
    <div><%= post.tags.map(&:name).join(', ') %></div>
    <div><span id ="index_star<%= post.id %>"></span>
     <script>
