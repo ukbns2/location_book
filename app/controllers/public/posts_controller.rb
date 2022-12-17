@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     # 投稿ボタンを押した場合
     if params[:go]
-      if @post.save
+      if @post.save(context: :publicize)
         redirect_to post_path(@post.id)
       else
         render :new
@@ -24,10 +24,12 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    # 投稿したものだけを表示
     @posts = Post.where(is_draft: :false).page(params[:page]).per(12)
   end
 
   def my_index
+    # 下書きも含めて全て表示
     @posts = current_user.posts.page(params[:page]).per(12)
   end
 
@@ -41,19 +43,8 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split(', ')
-    if @post.update(post_params)
-      # このpost_idに紐づいてタグを@oldに入れる
-      @old_relations = PostTag.where(post_id: @post.id)
-      # それらを取り出し、消す。消し終わる。
-      @old_relations.each do |relation|
-        relation.delete
-      end
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post.id)
-    else
-      render :edit
-    end
+    @post.update(post_params)
+    redirect_to post_path(@post.id)
   end
 
   def destroy
@@ -64,7 +55,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    # byebug
     params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft)
   end
 end

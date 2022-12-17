@@ -34,6 +34,14 @@
          //application.jsの20行目のratyを使用している
      </script>
     </div>
+    <div>
+     <% if post.is_draft %>
+      <p class ="text-dark">下書き</p>
+     <% else %>
+      <p class ="text-danger">投稿済</p>
+     <% end %>
+    </div>
+
    </div>
    <% end %>
  </div>
