@@ -6,18 +6,25 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_name].split(', ')
-    if @post.save
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post.id)
+    # 投稿ボタンを押した場合
+    if params[:go]
+      if @post.save
+        redirect_to post_path(@post.id)
+      else
+        render :new
+      end
+    # 下書きボタンを押した場合
     else
-      render :new
+      if @post.update(is_draft: true)
+        redirect_to post_path(@post.id)
+      else
+        render :new
+      end
     end
   end
 
   def index
-    @posts = Post.page(params[:page]).per(12)
-    @tag_list = Tag.all
+    @posts = Post.where(is_draft: :false).page(params[:page]).per(12)
   end
 
   def my_index
@@ -26,12 +33,10 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(', ')
   end
 
   def update
@@ -59,6 +64,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address)
+    # byebug
+    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft)
   end
 end
