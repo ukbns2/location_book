@@ -37,6 +37,10 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def detail
+    @post = Post.find(params[:id])
+  end
+
   def edit
     @post = Post.find(params[:id])
   end
@@ -78,6 +82,6 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft)
+    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft, :user_id)
   end
 end

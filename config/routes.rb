@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'users/detain' => 'users#detain'
     patch 'users/out' => 'users#out'
     get 'my_posts' => 'posts#my_index'
+    get 'posts/:id/detail' => 'posts#detail', as: 'detail_post'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
 
