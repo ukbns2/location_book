@@ -43,14 +43,37 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post.id)
+    # 下書きから投稿へ
+    if params[:go_draft]
+      @post.attributes = post_params.merge(is_draft: false)
+      if @post.save(context: :publicize)
+        redirect_to post_path(@post.id)
+      else
+        @post.is_draft = true
+        render :edit
+      end
+    # 投稿を更新
+    elsif params[:update_post]
+      @post.attributes = post_params
+      if @post.save(context: :publicize)
+        redirect_to post_path(@post.id)
+      else
+        render :edit
+      end
+    # 下書きを更新
+    else
+      if @post.update(post_params)
+        redirect_to post_path(@post.id)
+      else
+        render :edit
+      end
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to '/posts'
+    redirect_to '/my_posts'
   end
 
   private

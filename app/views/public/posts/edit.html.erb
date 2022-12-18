@@ -46,7 +46,12 @@
      </div>
 
      <div class ="actions">
-      <%= f.submit "変更を保存", class: "btn btn-success offset-lg-4" %>
+      <% if @post.is_draft == true %>
+       <%= f.submit "投稿する", :name => 'go_draft', class: "btn btn-success offset-lg-4" %>
+       <%= f.submit "変更を保存", :name => 'update_draft', class: "btn btn-secondary" %>
+      <% else %>
+       <%= f.submit "変更を保存", :name => 'update_post', class: "btn btn-success offset-lg-4" %>
+      <% end %>
      </div>
     <% end %>
 
