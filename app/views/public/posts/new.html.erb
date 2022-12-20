@@ -36,8 +36,8 @@
       <%= f.text_field :address, autocomplete: "address", size: "40" %>
      </div>
      <div class ="field">
-      <%= f.label "タグ", class: "col-lg-3 offset-lg-1" %>
-      <%= f.text_field :tag_name, value: @post.tags.pluck(:name), autocomplete: "tag_name" %>
+      <%= f.label :tag_id, "タグ", class: "col-lg-3 offset-lg-1" %>
+      <%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :name) %>
      </div>
 
      <div class ="field">
