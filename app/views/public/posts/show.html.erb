@@ -22,7 +22,13 @@
       </tr>
       <tr>
        <th class ="col-lg-3">タグ</th>
-       <th></th>
+       <th>
+        <% unless @post.tags.nil? %>
+         <% @post.tags.each do |tag| %>
+          <%= tag.name %>,
+         <% end %>
+        <% end %>
+       </th>
       </tr>
       <tr>
        <th class ="col-lg-3">評価</th>

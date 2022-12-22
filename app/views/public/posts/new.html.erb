@@ -36,8 +36,11 @@
       <%= f.text_field :address, autocomplete: "address", size: "40" %>
      </div>
      <div class ="field">
-      <%= f.label :tag_id, "タグ", class: "col-lg-3 offset-lg-1" %>
-      <%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :name) %>
+      <%= f.label :tag_ids, "タグ", class: "col-lg-3 offset-lg-1" %>
+      <%#= f.collection_select(:tag_ids, Tag.where(status: false), :id, :name) %>
+      <%= f.collection_check_boxes :tag_ids, Tag.where(status: false), :id, :name, include_hidden: false do |tag| %>
+       <%= tag.label {tag.check_box + tag.text }%>
+      <% end %>
      </div>
 
      <div class ="field">

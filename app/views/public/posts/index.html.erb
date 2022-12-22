@@ -17,7 +17,13 @@
     <% end %>
    </div>
    <div><%= post.address.truncate(15) %></div>
-   <div></div>
+   <div>
+    <% unless post.tags.nil? %>
+     <% post.tags.each do |tag| %>
+      <%= tag.name %>,
+     <% end %>
+    <% end %>
+   </div>
    <div><span id ="index_star<%= post.id %>"></span>
     <script>
        var index_elem = document.querySelector('#index_star<%= post.id %>');
