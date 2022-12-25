@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   with_options presence: true, on: :publicize do
     validates :title
     validates :body
+    validates :postal_code
     validates :address
     validates :rate
   end
