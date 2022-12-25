@@ -56,7 +56,9 @@
     </div>
     <div class ="field row mt-2">
      <%= f.label :rate, "評価", class: "col-12 offset-md-1 col-md-3" %>
-      <span id ="review_star"></span>
+     <div class ="col-3 col-md-5">
+      <div id ="review_star"></div>
+     </div>
     </div>
     <div class ="actions mt-2">
      <%= f.submit '投稿', :name => 'go', class: "btn btn-success offset-md-4 mt-2" %>
