@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_one_attached :image
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   with_options presence: true, on: :publicize do
     validates :title
     validates :body

@@ -56,7 +56,9 @@
    </div>
    <div class ="field row mt-2">
     <%= f.label :rate, "評価", class: "col-12 offset-md-1 col-md-3" %>
-    <span id ="edit_star"></span>
+    <div class ="col-3 col-md-5">
+     <span id ="edit_star"></span>
+    </div>
    </div>
    <div class ="actions mt-2">
     <% if @post.is_draft == true %>
