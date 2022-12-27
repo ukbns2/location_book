@@ -42,10 +42,12 @@
       </tr>
       <tr>
        <th class ="col-3 col-md-3">住所</th>
-       <th><%= @post.address %></th>
-        <span id ="map"></span>
+       <th>
+        <%= @post.address %>
+       </th>
       </tr>
     </table>
+    <div id ="map"></div>
     <div>
      <% if @post.user == current_user %>
       <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-md-1" %>
@@ -53,6 +55,7 @@
      <% end %>
     </div>
    </div>
+
 
  </div>
 </div>
@@ -104,6 +107,6 @@
 </script>
 
 <script async defer
-          src ="html://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBc-L4J15-3auQw4NpuU8yf8gRjPP3D2SQ&callback=initMap">
+          src ="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBc-L4J15-3auQw4NpuU8yf8gRjPP3D2SQ&callback=initMap">
 </script>
 

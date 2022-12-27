@@ -69,3 +69,5 @@ gem 'enum_help'
 
 #google mapの表示（緯度と経度の割り出し）
 gem 'geocoder'
+
+gem "dotenv-rails"
