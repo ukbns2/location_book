@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
-
+  namespace :admin do
+    get 'homes/top'
+  end
    #顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
+    resources :posts, only: [:show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
