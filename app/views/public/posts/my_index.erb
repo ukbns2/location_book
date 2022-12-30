@@ -41,6 +41,7 @@
      </script>
     </div>
     <div>
+     <%= post.created_at.strftime('%Y/%m/%d') %>
      <% if post.is_draft %>
       <p class ="text-dark">下書き</p>
      <% else %>

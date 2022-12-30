@@ -24,13 +24,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    # 投稿したものだけを表示
-    @posts = Post.where(is_draft: :false).page(params[:page]).per(12)
+    # 投稿したものだけを表示(ロケ地一覧)
+    @posts = Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
   end
 
   def my_index
     # 下書きも含めて全て表示
-    @posts = current_user.posts.page(params[:page]).per(12)
+    @posts = current_user.posts.order('id DESC').page(params[:page]).per(12)
   end
 
   def show
@@ -38,6 +38,7 @@ class Public::PostsController < ApplicationController
   end
 
   def detail
+    # ロケ地詳細
     @post = Post.find(params[:id])
   end
 
@@ -80,8 +81,14 @@ class Public::PostsController < ApplicationController
     redirect_to '/my_posts'
   end
 
+  #def destroy
+    #@post = Post.find(params[:id])
+    #@post.update(deleted: true)
+    #redirect_to my_posts_path
+  #end
+
   private
   def post_params
-    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft, :user_id, :latitude, :longitude, tag_ids: [])
+    params.require(:post).permit(:image, :title, :body, :rate, :postal_code, :address, :is_draft, :deleted, :user_id, :latitude, :longitude, tag_ids: [])
   end
 end
