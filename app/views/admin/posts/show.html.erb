@@ -3,11 +3,14 @@
  <h2 class ="mt-3">ロケ地投稿詳細</h2>
  <div class ="row">
    <div class ="col-12 col-md-5 mt-4">
-    <% if @post.image.attached? %>
-     <%= image_tag @post.image, size: "300x300" %>
-    <% else %>
-     <%= image_tag 'no-image', size: "300x300" %>
-    <% end %>
+    <div>
+     <% if @post.image.attached? %>
+      <%= image_tag @post.image, size: "300x300" %>
+     <% else %>
+      <%= image_tag 'no-image', size: "300x300" %>
+     <% end %>
+    </div>
+    <div>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
    </div>
 
    <div class ="col-10 col-md-7 mt-4">
