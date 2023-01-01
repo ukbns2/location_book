@@ -3,6 +3,7 @@
  <h2 class ="mt-3">ロケ地詳細</h2>
  <div class ="row">
    <div class ="col-12 col-md-5 mt-4">
+     <div>投稿者：<%= @post.user.name %>　投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
      <div>
       <% if @post.image.attached? %>
        <%= image_tag @post.image, size: "300x300" %>
@@ -10,18 +11,18 @@
        <%= image_tag 'no-image', size: "300x300" %>
       <% end %>
      </div>
-     <div>投稿者：<%= @post.user.name %>　投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
+     <div>コメント件数：<%= @post.comments.count %></div>
    </div>
 
 
    <div class ="col-10 col-md-7 mt-4">
     <table class ="table table-borderless">
       <tr>
-       <th class ="col-3 col-md-3">タイトル</th>
+       <th class ="col-3 col-md-3">場所名</th>
        <th><%= @post.title %></th>
       </tr>
       <tr>
-       <th class ="col-3 col-md-3">概要</th>
+       <th class ="col-3 col-md-3">目的</th>
        <th><%= @post.body %></th>
       </tr>
       <tr>
@@ -60,8 +61,28 @@
     <!-- <% end %>-->
     <!--</div>-->
    </div>
-
  </div>
+<div class ="border-bottom border-dark mt-4"></div>
+</div>
+
+<div class ="container">
+   <div class ="col-12 mt-3">
+    <div>
+     <% @post.comments.each do |comment| %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %>&nbsp;&nbsp;
+      <%= comment.user.name %>　　<%= comment.comment %>
+      <% if comment.user == current_user %>
+       <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete %>
+      <% end %>
+     <% end %>
+    </div>
+    <div>
+    <%= form_with model: [@post, @comment] do |f| %>
+      <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する", class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+   </div>
 </div>
 
 <script>

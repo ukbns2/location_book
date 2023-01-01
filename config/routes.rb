@@ -24,8 +24,9 @@ Rails.application.routes.draw do
     get 'my_posts' => 'posts#my_index'
     #patch 'posts/destroy' => 'posts#destroy'
     get 'posts/:id/detail' => 'posts#detail', as: 'detail_post'
+    get 'post/comments' => 'comments#index'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-     resources :comments, only: [:create]
+     resources :comments, only: [:create, :destroy]
     end
   end
 

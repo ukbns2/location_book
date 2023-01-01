@@ -13,14 +13,14 @@
     <div>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
    </div>
 
-   <div class ="col-10 col-md-7 mt-4">
+   <div class ="col-12 col-md-7 mt-4">
     <table class ="table table-borderless">
       <tr>
-       <th class ="col-3 col-md-3">タイトル</th>
+       <th class ="col-3 col-md-3">場所名</th>
        <th><%= @post.title %></th>
       </tr>
       <tr>
-       <th class ="col-3 col-md-3">概要</th>
+       <th class ="col-3 col-md-3">目的</th>
        <th><%= @post.body %></th>
       </tr>
       <tr>
@@ -50,16 +50,17 @@
        </th>
       </tr>
     </table>
-    <div id ="map"></div>
-    <div class ="mt-2">
+    <div class ="offset-1">
+     <div id ="map"></div>
+    </div>
+    <div class ="mt-3">
      <% if @post.user == current_user %>
-      <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-md-1" %>&nbsp;
+      <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-md-1" %>&nbsp;&nbsp;
       <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %>
       <%#= link_to '削除する', posts_destroy_path(@post), method: :patch, class: "btn btn-danger", "data-confirm" => "本当に削除しますか?"  %>
      <% end %>
     </div>
    </div>
-
 
  </div>
 </div>
