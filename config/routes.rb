@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
 
-  namespace :admin do
-    get 'homes/top'
-  end
+
    #顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -26,7 +24,9 @@ Rails.application.routes.draw do
     get 'my_posts' => 'posts#my_index'
     #patch 'posts/destroy' => 'posts#destroy'
     get 'posts/:id/detail' => 'posts#detail', as: 'detail_post'
-    resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+     resources :comments, only: [:create]
+    end
   end
 
   namespace :admin do
