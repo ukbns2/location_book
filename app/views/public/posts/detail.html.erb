@@ -11,7 +11,18 @@
        <%= image_tag 'no-image', size: "300x300" %>
       <% end %>
      </div>
-     <div>コメント件数：<%= @post.comments.count %></div>
+     <div>コメント件数：<%= @post.comments.count %>&nbsp;&nbsp;
+
+     <% if @post.favorited_by?(current_user) %>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+       🖤<%= @post.favorites.count %>いいね
+      <% end %>
+     <% else %>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+       🤍<%= @post.favorites.count %>いいね
+      <% end %>
+     <% end %>
+     </div>
    </div>
 
 
@@ -73,7 +84,7 @@
       <%= comment.user.name %>　　<%= comment.comment %>
       <% if comment.user == current_user %>
        <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete %>
-      <% end %>
+      <% end %><br>
      <% end %>
     </div>
     <div>

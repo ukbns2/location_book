@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # 退会済みのユーザーが同じアカウントでログインできないように制約
   def active_for_authentication?
