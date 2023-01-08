@@ -2,6 +2,18 @@
 <div class ="container">
  <h2 class ="mt-3">コメント一覧</h2>
  <div class ="row">
+  <div class ="col-12 mt-3">
+   <div>
+    <% @post.comments.each do |comment| %>
+     <%= comment.created_at.strftime('%Y/%m/%d') %>&nbsp;&nbsp;
+     <%= comment.user.name %>　　<%= comment.comment %>
+     <% if comment.user == current_user %>
+      <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete %>
+     <% end %><br>
+    <% end %>
+   </div>
+  </div>
+
 
  </div>
 </div>

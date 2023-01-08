@@ -23,13 +23,20 @@
   </div>
 
   <div class ="mt-3">
-    <h4>いいね　</h4>
-  </div>
-  <div class ="mt-3">
-    <h4>ブックマーク　</h4>
+    <h4>いいね(<%= @user.favorites.count %>)</h4>
+    <% @user.favorites.each do |favorite| %>
+      <div>
+        <%= link_to favorite.post.title, detail_post_path(favorite.post.id) %>
+      </div>
+    <% end %>
   </div>
   <div class ="mt-3">
     <h4>コメント　<%#= link_to "一覧を見る", post_comments_path, class: "btn btn-primary" %></h4>
+    <% @user.comments.each do |comment| %>
+      <div>
+        <%= link_to comment.post.title, detail_post_path(comment.post.id) %>
+      </div>
+    <% end %>
   </div>
 
 </div>
