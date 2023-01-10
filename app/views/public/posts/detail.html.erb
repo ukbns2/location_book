@@ -12,7 +12,9 @@
       <% end %>
      </div>
      <div class="d-flex">
-      コメント件数：<%= @post.comments.count %>&nbsp;&nbsp;
+      <div id ="comments-counter">
+       <%= render partial: 'public/comments/counter', locals: {post: @post} %>&nbsp;&nbsp;
+      </div>
       <div id="favorite">
        <%= render partial: 'public/favorites/btn', locals: {post: @post} %>
       </div>
@@ -72,20 +74,11 @@
 
 <div class ="container">
    <div class ="col-12 mt-3">
-    <div>
-     <% @post.comments.each do |comment| %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %>&nbsp;&nbsp;
-      <%= comment.user.name %>　　<%= comment.comment %>
-      <% if comment.user == current_user %>
-       <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete %>
-      <% end %><br>
-     <% end %>
+    <div id ="comments-index">
+     <%= render partial: 'public/comments/index', locals: {post: @post} %>
     </div>
     <div>
-    <%= form_with model: [@post, @comment] do |f| %>
-      <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する", class: 'btn btn-primary' %>
-    <% end %>
+     <%= render partial: 'public/comments/form', locals: {post: @post, comment: @comment} %>
     </div>
    </div>
 </div>

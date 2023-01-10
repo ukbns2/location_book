@@ -25,8 +25,7 @@ Rails.application.routes.draw do
     #patch 'posts/destroy' => 'posts#destroy'
     get 'posts/:id/detail' => 'posts#detail', as: 'detail_post'
     get 'user/favorites/index' => 'favorites#index'
-    #↓コメント一覧を作成したいが、これを入れるとコメントができなくなる
-    #get 'post/comments' => 'comments#index'
+    get 'user/comments/index' => 'comments#index'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
      resource :favorites, only: [:create, :destroy]
      resources :comments, only: [:create, :destroy]
