@@ -1,9 +1,5 @@
 <div>
- <% post.comments.each do |comment| %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %>&nbsp;&nbsp;
-  <%= comment.user.name %>　　<%= comment.comment %>
-  <% if comment.user == current_user %>
-   <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete, remote: true %>
-  <% end %><br>
- <% end %>
+  <% comments.each do |comment| %>
+    <%= render 'public/comments/comment', comment: comment %>
+  <% end %>
 </div>

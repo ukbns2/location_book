@@ -1,2 +1,3 @@
-$('#comments-counter').html("<%= j(render partial: 'public/comments/counter', locals: {post: @post}) %>")
-$('#comments-index').html("<%= j(render partial: 'public/comments/index', locals: {post: @post}) %>")
+$('#comments-counter span').text(<%= @post.comments.size %>)
+$('#comments-index').append("<%= j(render partial: 'public/comments/comment', locals: {comment: @comment}) %>")
+$('#comment_comment').val("")

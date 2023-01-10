@@ -40,6 +40,7 @@ class Public::PostsController < ApplicationController
   def detail
     # ロケ地詳細
     @post = Post.find(params[:id])
+    @comments = @post.comments
     @comment = Comment.new
   end
 

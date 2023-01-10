@@ -12,8 +12,8 @@
       <% end %>
      </div>
      <div class="d-flex">
-      <div id ="comments-counter">
-       <%= render partial: 'public/comments/counter', locals: {post: @post} %>&nbsp;&nbsp;
+      <div id ="comments-counter" class="mr-2">
+       コメント件数：<span><%= @comments.size %></span>
       </div>
       <div id="favorite">
        <%= render partial: 'public/favorites/btn', locals: {post: @post} %>
@@ -75,7 +75,7 @@
 <div class ="container">
    <div class ="col-12 mt-3">
     <div id ="comments-index">
-     <%= render partial: 'public/comments/index', locals: {post: @post} %>
+     <%= render partial: 'public/comments/index', locals: {comments: @comments} %>
     </div>
     <div>
      <%= render partial: 'public/comments/form', locals: {post: @post, comment: @comment} %>
