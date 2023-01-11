@@ -5,3 +5,20 @@
     <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete, remote: true %>
   <% end %>
 </div>
+
+<!--table表記にしようとしたが、ほぼ同じ表示になるため、そのまま上記の記述を利用-->
+<!--<table>-->
+<!--  <tbody>-->
+<!--    <div id="comments-counter__<%= comment.id %>" class="mb-2">-->
+<!--      <tr>-->
+<!--        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>-->
+<!--        <td><%= comment.user.name %></td>-->
+<!--        <td><%= comment.comment %></td>-->
+<!--        <td>-->
+<!--          <% if comment.user == current_user %>-->
+<!--            <%= link_to '削除', post_comment_path(comment.post, comment), method: :delete, remote: true %>-->
+<!--          <% end %>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--  </tbody>-->
+<!--</table >-->

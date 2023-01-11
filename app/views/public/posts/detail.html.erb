@@ -15,7 +15,7 @@
       <div id ="comments-counter" class="mr-2">
        コメント件数：<span><%= @comments.size %></span>
       </div>
-      <div id="favorite">
+      <div id="favorite" class ="ml-2">
        <%= render partial: 'public/favorites/btn', locals: {post: @post} %>
       </div>
      </div>
