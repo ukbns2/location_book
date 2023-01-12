@@ -1,0 +1,30 @@
+
+<div class ="container">
+ <h2 class ="mt-3">コメント一覧(<%= @comments.count %>件)</h2>
+ <div class ="row">
+  <div class ="col-12 mt-3">
+   <table class ="table table-hover table-inverse table-bordered">
+    <therd>
+     <tr class ="table-warning">
+      <th>日時</th>
+      <th>場所名</th>
+      <th>コメント内容</th>
+      <th>コメントユーザー</th>
+      <th>　</th>
+     </tr>
+    </therd>
+    <tbody>
+     <% @comments.each do |comment| %>
+     <tr>
+       <th><%= comment.created_at.strftime('%Y/%m/%d　%H:%M:%S') %></th>
+       <th><%= comment.post.title %></th>
+       <th><%= link_to comment.comment, admin_post_path(comment.post.id) %></th>
+       <th><%= comment.user.name %></th>
+       <th><%= link_to "編集", edit_admin_comment_path(comment.id), class:"btn btn-success" %></th>
+     </tr>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>

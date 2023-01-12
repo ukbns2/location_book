@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
    #顧客用
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -37,6 +36,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
     resources :posts, only: [:show, :edit, :update]
+    resources :comments, only: [:index, :edit, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
