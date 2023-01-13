@@ -15,8 +15,8 @@
   <div class ="mt-5">
     <div class ="col-lg-8">
       <table class ="table table-inverse">
-       <thead class ="thead-light">
-        <tr>
+       <thead>
+        <tr class ="table-warning">
          <th>タグ</th>
          <th>ステータス</th>
          <th colspan ="2"></th>
@@ -30,7 +30,7 @@
           <% if tag.status %>
            <p class ="text-secondary">　非表示</p>
           <% else %>
-           <p class ="text-info">　表示</p>
+           <p class ="text-primary">　表示</p>
           <% end %>
          </td>
          <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>

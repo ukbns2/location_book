@@ -7,6 +7,12 @@ class Admin::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    redirect_to admin_comments_path
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
