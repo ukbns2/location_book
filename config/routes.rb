@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
+    #patch 'comments/:id' => 'comments#destroy'
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
     resources :posts, only: [:show, :edit, :update]

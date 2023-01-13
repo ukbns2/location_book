@@ -2,7 +2,7 @@
 <div class ="container">
  <h2 class ="mt-3">コメント編集</h2>
 
- <%= form_with model: @comment, url: admin_comment_path(@comment.id), method: :patch do |f| %>
+ <%= form_with model: @comment, url: admin_comments_path(@comment), method: :patch do |f| %>
   <div class ="field row mt-3">
     <%= f.label :ユーザーID, "ユーザーID", class: "col-12 offset-md-1 col-md-3" %>
     <div class ="col-3 col-md-5">
@@ -23,10 +23,10 @@
       <%= f.text_area :comment, rows: '3' %>
     </div>
   </div>
+  <% end %>
 
   <div class ="actions mt-2">
-    <%= f.submit "削除", method: :delete, class: "btn btn-danger offset-md-4", "data-confirm" => "本当に削除してよろしいですか?" %>
+    <%=  link_to '削除',  admin_comment_path(@comment.id), method: :delete, class: "btn btn-danger offset-md-4", "data-confirm" => "本当に削除してよろしいですか?" %>
   </div>
- <% end %>
 </div>
 
