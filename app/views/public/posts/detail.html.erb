@@ -35,11 +35,11 @@
       <tr>
        <th class ="col-3 col-md-3">タグ</th>
        <th>
-        <% unless @post.tags.nil? %>
+        <%# unless @post.tags.nil? %>
          <% @post.tags.each do |tag| %>
           <%= tag.name %>,
          <% end %>
-        <% end %>
+        <%# end %>
        </th>
       </tr>
       <tr>

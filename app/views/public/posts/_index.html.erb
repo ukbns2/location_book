@@ -1,35 +1,8 @@
-
-<div class ="container">
- <% if params[:tag_ids] %>
-  <h2 class ="mt-3"><%= @tag.name %>のロケ地一覧　(全<%= @all_posts_count %>件)</h2>
- <% else %>
-  <h2 class ="mt-3">ロケ地一覧　(全<%= @all_posts_count %>件)</h2>
- <% end %>
-
- <div class ="row">
-  <div class ="col-lg-2 mt-4">
-   <%= link_to "ロケ地一覧に戻る", posts_path %>
-   <table class ="table table-bordered">
-    <thead class ="table-success">
-     <tr>
-      <th>タグ一覧</th>
-     </tr>
-    </thead>
-    <tbody>
-     <% @tags.each do |tag| %>
-     <tr>
-      <th><%= link_to tag.name, posts_path(tag_ids: tag.id) %></th>
-     </tr>
-     <% end %>
-    </tbody>
-   </table>
-  </div>
-
-  <div class ="col-lg-9 mr-2">
+  <div class ="col-lg-9 col-md-4">
+   <h2 class ="mt-3">ロケ地一覧</h2>
    <div class ="row">
-   <% if @posts.first %>
     <% @posts.each do |post| %>
-    <div class ="mt-4 col-lg-3">
+    <div class ="col-lg-3 col-md-12">
      <div>
       <% if post.image.attached? %>
        <%= image_tag post.image, size: "160x160" %>
@@ -69,14 +42,11 @@
      </div>
     </div>
     <% end %>
-   <% else %>
-    <h3 class ="mt-4">対応するロケ地の投稿はありませんでした。</h3>
-   <% end %>
    </div>
   </div>
+
+ <div class ="row justify-content-center mt-3">
+   <%= paginate @posts %>
  </div>
-</div>
-
-
 
 

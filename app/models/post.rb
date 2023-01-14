@@ -21,6 +21,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :rate, presence: true
+  validates :tag_ids, presence: true
 
 
   def favorited_by?(user)
