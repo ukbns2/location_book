@@ -28,5 +28,16 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # def self.search(keyword)
+  #   where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  # end
+
+  def self.looks(search, keyword)
+    if search == "perfect_match"
+      @post = Post.where(["title like? OR body like?", "#{keyword}", "#{keyword}"])
+    else
+      @post = Post.where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+    end
+  end
 
 end

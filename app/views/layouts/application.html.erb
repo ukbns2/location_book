@@ -20,15 +20,20 @@
             <!--管理者がログインしているとき-->
             <% if admin_signed_in? %>
               <%= link_to admin_path do %>
-              <%= image_tag 'IMG_8607.jpg', size: "350x80" %>
+              <%= image_tag 'IMG_8607.jpg', size: "300x80" %>
               <% end %>
             <!--ユーザーがログインしている or ログインしていないとき-->
             <% else %>
               <%= link_to root_path do %>
-              <%= image_tag 'IMG_8607.jpg', size: "350x80" %>
+              <%= image_tag 'IMG_8607.jpg', size: "300x80" %>
               <% end %>
             <% end %>
           </div>
+
+          <div class ="justify-content-center">
+            <%= render 'layouts/search' %>
+          </div>
+
           <button class ="navbar-toggler" type ="bottom" data-toggle ="collapse" data-target ="#navbarNavDropdown" aria-controls ="navbarNavDropdown" aria-expanded ="false" aria-label ="Toggle navigation">
             <span class ="navbar-toggler-icon"></span>
           </button>

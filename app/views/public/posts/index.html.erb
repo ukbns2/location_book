@@ -18,7 +18,7 @@
     <tbody>
      <% @tags.each do |tag| %>
      <tr>
-      <th><%= link_to tag.name, posts_path(tag_ids: tag.id) %></th>
+      <th><%= link_to tag.name, posts_path(tag_ids: tag.id), class: 'tag_link' %></th>
      </tr>
      <% end %>
     </tbody>
@@ -70,7 +70,7 @@
     </div>
     <% end %>
    <% else %>
-    <h3 class ="mt-4">対応するロケ地の投稿はありませんでした。</h3>
+    <h3 class ="mt-4">　　　該当するロケ地の投稿はありませんでした。</h3>
    <% end %>
    </div>
   </div>

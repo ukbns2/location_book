@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get 'posts/:id/detail' => 'posts#detail', as: 'detail_post'
     get 'user/favorites/index' => 'favorites#index'
     get 'user/comments/index' => 'comments#index'
+    get 'search' => 'searches#search'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
      resource :favorites, only: [:create, :destroy]
      resources :comments, only: [:create, :destroy]
