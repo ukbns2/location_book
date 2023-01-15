@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
-    resources :posts, only: [:show, :edit, :update]
+    resources :posts, only: [:show, :edit, :update, :destroy]
     resources :comments, only: [:index, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

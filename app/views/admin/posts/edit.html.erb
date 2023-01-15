@@ -72,17 +72,18 @@
      <span id ="edit_star"></span>
     </div>
    </div>
-   <div class ="field row mt-2">
-     <%= f.label :投稿状況, class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-       <%= f.radio_button :deleted, false %>
-       <%= f.label :deleted, "表示　" %>
-       <%= f.radio_button :deleted, true %>
-       <%= f.label :deleted, "非表示" %>
-     </div>
-   </div>
+   <!--<div class ="field row mt-2">-->
+   <!--  <%= f.label :投稿状況, class: "col-12 offset-md-1 col-md-3" %>-->
+   <!--  <div class ="col-3 col-md-5">-->
+   <!--    <%= f.radio_button :deleted, false %>-->
+   <!--    <%= f.label :deleted, "表示　" %>-->
+   <!--    <%= f.radio_button :deleted, true %>-->
+   <!--    <%= f.label :deleted, "非表示" %>-->
+   <!--  </div>-->
+   <!--</div>-->
    <div class ="actions mt-3">
     <%= f.submit "変更を保存", class: "btn btn-success offset-md-4" %>
+    <%= link_to '削除する', admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %>
    </div>
   <% end %>
  </div>
