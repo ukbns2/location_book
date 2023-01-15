@@ -2,8 +2,18 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
 
   def top
-    @posts = Post.order('id DESC').page(params[:page]).per(12)
+    @tags = Tag.where(status: :false)
+    if params[:tag_ids]
+      @tag = @tags.find(params[:tag_ids])
+      all_posts = @tag.posts
+    else
+      all_posts = Post.where(is_draft: :false).includes(:tag)
+    end
+    @posts = params[:tag_ids].present? ? Tag.find(params[:tag_ids]).posts : Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
+    #@posts = Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
+    @all_posts_count = all_posts.count
   end
+
 
   private
   def post_params
