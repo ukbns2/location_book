@@ -1,0 +1,50 @@
+<div class ="container">
+  <h2 class ="mt-3">検索結果一覧</h2>
+  <div class ="row">
+   <% if @posts.first %>
+    <% @posts.each do |post| %>
+     <div class ="col-lg-3">
+      <div>
+       <% if post.image.attached? %>
+        <%= image_tag post.image, size: "200x200" %>
+       <% else %>
+        <%= image_tag 'no-image', size: "200x200" %>
+       <% end %>
+      </div>
+      <div>
+       <%= link_to post_path(post.id) do %>
+        <%= post.title %>
+       <% end %>
+      </div>
+      <div><%= post.address.truncate(15) %></div>
+      <div>
+       <% post.tags.each do |tag| %>
+        <%= tag.name %>,
+       <% end %>
+      </div>
+      <div><span id ="my_index_star<%= post.id %>"></span>
+       <script>
+          var index_elem = document.querySelector('#my_index_star<%= post.id %>');
+          $('#my_index_star<%= post.id %>').empty();
+            // scriptファイルをどのidの部分に配置するかを指定
+          var index_opt = {
+           starOn: "<%= asset_path('star-on.png') %>",
+           starOff: "<%= asset_path('star-off.png') %>",
+           starHalf: "<%= asset_path('star-half.png') %>",
+           readOnly: true,
+           score: <%= post.rate %>
+            //星画像の指定などのオプションをここに記述,
+           };
+         raty(index_elem,index_opt);
+           //application.jsの20行目のratyを使用している
+       </script>
+      </div>
+     </div>
+    <% end %>
+
+   <% else %>
+    <h3 class ="mt-4">　　　該当するロケ地の投稿はありませんでした。</h3>
+   <% end %>
+
+  </div>
+</div>
