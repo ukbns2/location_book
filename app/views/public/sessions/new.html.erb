@@ -6,16 +6,16 @@
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <div class="field">
         <%= f.label :メールアドレス, class: "col-3 col-form-label offset-1 mt-1" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "30" %>
       </div>
 
       <div class="field">
         <%= f.label :パスワード, class: "col-3 col-form-label offset-1 mt-1" %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <%= f.password_field :password, autocomplete: "current-password", size: "30" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン", class: 'btn btn-primary  offset-4 mt-4' %>
+        <%= f.submit "ログイン", class: 'btn btn-primary  offset-5 mt-4' %>
       </div>
     <% end %>
   </div>
@@ -23,7 +23,7 @@
   <div class ="mt-5">
     <h4 class ="offset-1">※会員登録がお済みでない方</h4>
     <div class ="offset-2">
-     <h5><%= link_to "こちら", "/users/sign_up" %>から新規登録をしてください。<h5>
+      <h5><%= link_to "こちら", "/users/sign_up" %>から新規登録をしてください。<h5>
     </div>
   </div>
 

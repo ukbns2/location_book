@@ -2,70 +2,70 @@
 <div class ="container">
  <h2 class ="mt-3">投稿詳細</h2>
  <div class ="row">
-   <div class ="col-12 col-md-5 mt-4">
-    <div>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
-    <div>
-     <% if @post.image.attached? %>
-      <%= image_tag @post.image, size: "300x300" %>
-     <% else %>
-      <%= image_tag 'no-image', size: "300x300" %>
-     <% end %>
-    </div>
-    <div>
-     コメント件数：<%= @post.comments.count %>　　❤️<%= @post.favorites.count %> いいね
-    </div>
-   </div>
-
-   <div class ="col-12 col-md-7 mt-4">
-    <table class ="table table-borderless">
-      <tr>
-       <th class ="col-3 col-md-3">場所名</th>
-       <th><%= @post.title %></th>
-      </tr>
-      <tr>
-       <th class ="col-3 col-md-3">概要</th>
-       <th><%= @post.body %></th>
-      </tr>
-      <tr>
-       <th class ="col-3 col-md-3">タグ</th>
-       <th>
-        <% unless @post.tags.nil? %>
-         <% @post.tags.each do |tag| %>
-          <%= tag.name %>,
-         <% end %>
+    <div class ="col-12 col-md-5 mt-4">
+      <div>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
+      <div>
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, size: "300x300" %>
+        <% else %>
+          <%= image_tag 'no-image', size: "300x300" %>
         <% end %>
-       </th>
-      </tr>
-      <tr>
-       <th class ="col-3 col-md-3">評価</th>
-       <th>
-        <span id ="show_star"></span>
-       </th>
-      </tr>
-      <tr>
-       <th class ="col-3 col-md-3">郵便番号</th>
-       <th><%= @post.postal_code %></th>
-      </tr>
-      <tr>
-       <th class ="col-3 col-md-3">住所</th>
-       <th>
-        <%= @post.address %>
-       </th>
-      </tr>
-    </table>
-    <div class ="offset-1">
-     <div id ="map"></div>
+      </div>
+      <div>
+        コメント件数：<%= @post.comments.count %>　　❤️<%= @post.favorites.count %> いいね
+      </div>
     </div>
-    <div class ="mt-3">
-     <% if @post.user == current_user %>
-      <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-md-1" %>&nbsp;&nbsp;
-      <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %>
-      <%#= link_to '削除する', posts_destroy_path(@post), method: :patch, class: "btn btn-danger", "data-confirm" => "本当に削除しますか?"  %>
-     <% end %>
-    </div>
-   </div>
 
- </div>
+    <div class ="col-12 col-md-7 mt-4">
+      <table class ="table table-borderless">
+        <tr>
+          <th class ="col-3 col-md-3">場所名</th>
+          <th><%= @post.title %></th>
+        </tr>
+        <tr>
+          <th class ="col-3 col-md-3">概要</th>
+          <th><%= @post.body %></th>
+        </tr>
+        <tr>
+          <th class ="col-3 col-md-3">タグ</th>
+          <th>
+            <% unless @post.tags.nil? %>
+              <% @post.tags.each do |tag| %>
+                <%= tag.name %>,
+              <% end %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th class ="col-3 col-md-3">評価</th>
+          <th>
+            <span id ="show_star"></span>
+          </th>
+        </tr>
+        <tr>
+          <th class ="col-3 col-md-3">郵便番号</th>
+          <th><%= @post.postal_code %></th>
+        </tr>
+        <tr>
+          <th class ="col-3 col-md-3">住所</th>
+          <th>
+            <%= @post.address %>
+          </th>
+        </tr>
+      </table>
+      <div class ="offset-1">
+        <div id ="map"></div>
+      </div>
+      <div class ="mt-3">
+        <% if @post.user == current_user %>
+          <%= link_to '編集する', edit_post_path(@post), class: "btn btn-success offset-md-1" %>&nbsp;&nbsp;
+          <%= link_to '削除する', post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class: "btn btn-danger" %>
+          <%#= link_to '削除する', posts_destroy_path(@post), method: :patch, class: "btn btn-danger", "data-confirm" => "本当に削除しますか?"  %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <script>

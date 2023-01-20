@@ -1,80 +1,79 @@
 <h1 class ="offset-1">Topページ</h1>
 
 <div class ="container">
-  <p id ="alert"><%= alert %></p>
+　<p id ="alert"><%= alert %></p>
 
- <div class ="row">
-  <div class ="col-lg-2 mt-4">
-   <table class ="table table-bordered">
-    <thead class ="table-success">
-     <tr>
-      <th>タグ検索</th>
-     </tr>
-    </thead>
-    <tbody>
-     <% @tags.each do |tag| %>
-     <tr>
-      <th><%= link_to tag.name, posts_path(tag_ids: tag.id), class: 'tag_link' %></th>
-     </tr>
-     <% end %>
-    </tbody>
-   </table>
+　<div class ="row">
+　　<div class ="col-lg-2 mt-4">
+   　　<table class ="table table-bordered">
+    　　<thead class ="table-success">
+     　　　<tr>
+    　       <th>タグ検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+          <tr>
+            <th><%= link_to tag.name, posts_path(tag_ids: tag.id), class: 'tag_link' %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class ="col-lg-9">
+      <div class ="top_image ml-2 mt-3">
+        <div class ="back_image">
+          <h5 class ="text justify-content-center offset-lg-1 mt-3">
+            <br>
+            <br>
+            <br>
+            <br>
+            ようこそ！<br>
+            このサイトは、ロケ地のレビューが集まったコミュニティサイトになります。<br>
+            会員でない方も情報の閲覧はできますが、<br>
+            投稿やコメント等には会員登録が必要になります。<br>
+            <br>
+            <br>
+            <br>
+          </h5>
+        </div>
+      </div>
+
+      <div class ="ml-2 mt-3">
+        <h3 class ="mt-4">新着投稿</h3>
+
+        <div class ="row mt-3">
+          <% @posts.each do |post| %>
+          <div class ="col-lg-3">
+            <div>
+              <% if post.image.attached? %>
+                <%= image_tag post.image, size: "160x160" %>
+              <% else %>
+                <%= image_tag 'no-image', size: "160x160" %>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to detail_post_path(post.id) do %>
+                <%= post.title %>
+              <% end %>
+            </div>
+            <div><%= post.address.truncate(11) %></div>
+            <div>
+              <% post.tags.each do |tag| %>
+                <%= tag.name %>,
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class ="offset-lg-10 mt-2">
+        <%= link_to "全ての投稿を見る>", posts_path %>
+      </div>
+
+    </div>
+
   </div>
-
-
-  <div class ="col-lg-9">
-    <div class ="top_image ml-2 mt-3">
-     <div class ="back_image">
-       <h5 class ="text justify-content-center offset-lg-1 mt-3">
-         <br>
-         <br>
-         <br>
-         <br>
-          ようこそ！<br>
-          このサイトは、ロケ地のレビューが集まったコミュニティサイトになります。<br>
-          会員でない方も情報の閲覧はできますが、<br>
-          投稿やコメント等には会員登録が必要になります。<br>
-          <br>
-          <br>
-          <br>
-       </h5>
-      </div>
-    </div>
-
-    <div class ="ml-2 mt-3">
-     <h3 class ="mt-4">新着投稿</h3>
-
-     <div class ="row mt-3">
-      <% @posts.each do |post| %>
-      <div class ="col-lg-3">
-       <div>
-        <% if post.image.attached? %>
-         <%= image_tag post.image, size: "160x160" %>
-        <% else %>
-         <%= image_tag 'no-image', size: "160x160" %>
-        <% end %>
-       </div>
-       <div>
-        <%= link_to detail_post_path(post.id) do %>
-         <%= post.title %>
-        <% end %>
-       </div>
-       <div><%= post.address.truncate(11) %></div>
-       <div>
-        <% post.tags.each do |tag| %>
-         <%= tag.name %>,
-        <% end %>
-       </div>
-      </div>
-      <% end %>
-     </div>
-    </div>
-
-    <div class ="offset-lg-10 mt-2">
-      <%= link_to "全ての投稿を見る>", posts_path %>
-    </div>
-
-   </div>
-
- </div>
 </div>

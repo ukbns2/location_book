@@ -1,72 +1,72 @@
 
 <div class ="container">
- <h2 class ="mt-3 text-dark bg-light">投稿フォーム</h2>
+  <h2 class ="mt-3 text-dark bg-light">投稿フォーム</h2>
 
- <div class ="mt-4">
-   <% if @post.errors.any? %>
-    <ul class ="alert alert-danger" role ="alert">
-     <h6 class ="alert-heading">
-      <%= @post.errors.count %>件のエラーが発生しました
-     </h6>
-     <%= @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-     <% end %>
-    </ul>
-   <% end %>
+  <div class ="mt-4">
+    <% if @post.errors.any? %>
+      <ul class ="alert alert-danger" role ="alert">
+        <h6 class ="alert-heading">
+          <%= @post.errors.count %>件のエラーが発生しました
+        </h6>
+        <%= @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-   <%= form_with model: @post do |f| %>
-    <div class ="field row">
-     <%= f.label :image, "画像", class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-      <%= f.file_field :image, accept: "image/*" %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :title, "場所名", class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-      <%= f.text_field :title, autofocus: true, autocomplete: "title", size: "40" %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :body, "概要", class: "col-12 offset-md-1 col-md-3 align-top" %>
-     <div class ="col-3 col-md-5">
-      <%= f.text_area :body, size: "40x5" %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-      <%= f.text_field :postal_code, autocomplete: "postal_code" %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :address, "住所", class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-      <%= f.text_field :address, autocomplete: "address", size: "40" %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :tag_ids, "タグ(複数選択可)", class: "col-12 offset-md-1 col-md-3" %>
-     <%#= f.collection_select(:tag_ids, Tag.where(status: false), :id, :name) %>
-     <div class ="col-3 col-md-5">
-      <%= f.collection_check_boxes :tag_ids, Tag.where(status: false), :id, :name, include_hidden: false do |tag| %>
-       <%= tag.label {tag.check_box + tag.text }%>&nbsp;
-      <% end %>
-     </div>
-    </div>
-    <div class ="field row mt-2">
-     <%= f.label :rate, "評価", class: "col-12 offset-md-1 col-md-3" %>
-     <div class ="col-3 col-md-5">
-      <div id ="review_star"></div>
-     </div>
-    </div>
-    <div class ="actions mt-2">
-     <%= f.submit '投稿', :name => 'go', class: "btn btn-success offset-md-4 mt-2" %>
-     <%= f.submit '下書きに保存', :name => 'draft',  class: "btn btn-secondary mt-2" %>
-    </div>
-   <% end %>
+    <%= form_with model: @post do |f| %>
+      <div class ="field row">
+        <%= f.label :image, "画像", class: "col-12 offset-md-1 col-md-3" %>
+        <div class ="col-3 col-md-5">
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :title, "場所名", class: "col-12 offset-md-1 col-md-3" %>
+        <div class ="col-3 col-md-5">
+          <%= f.text_field :title, autofocus: true, autocomplete: "title", size: "40" %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :body, "概要", class: "col-12 offset-md-1 col-md-3 align-top" %>
+        <div class ="col-3 col-md-5">
+          <%= f.text_area :body, size: "40x5" %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-12 offset-md-1 col-md-3" %>
+        <div class ="col-3 col-md-5">
+          <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :address, "住所", class: "col-12 offset-md-1 col-md-3" %>
+        <div class ="col-3 col-md-5">
+          <%= f.text_field :address, autocomplete: "address", size: "40" %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :tag_ids, "タグ(複数選択可)", class: "col-12 offset-md-1 col-md-3" %>
+        <%#= f.collection_select(:tag_ids, Tag.where(status: false), :id, :name) %>
+        <div class ="col-3 col-md-5">
+          <%= f.collection_check_boxes :tag_ids, Tag.where(status: false), :id, :name, include_hidden: false do |tag| %>
+            <%= tag.label {tag.check_box + tag.text }%>&nbsp;
+          <% end %>
+        </div>
+      </div>
+      <div class ="field row mt-2">
+        <%= f.label :rate, "評価", class: "col-12 offset-md-1 col-md-3" %>
+        <div class ="col-3 col-md-5">
+          <div id ="review_star"></div>
+        </div>
+      </div>
+      <div class ="actions mt-2">
+        <%= f.submit '投稿', :name => 'go', class: "btn btn-success offset-md-4 mt-2" %>
+        <%= f.submit '下書きに保存', :name => 'draft',  class: "btn btn-secondary mt-2" %>
+      </div>
+    <% end %>
 
- </div>
+  </div>
 </div>
 
 <script>

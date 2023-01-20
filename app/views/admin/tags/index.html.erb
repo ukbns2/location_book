@@ -15,28 +15,28 @@
   <div class ="mt-5">
     <div class ="col-8 offset-1">
       <table class ="table table-inverse">
-       <thead>
-        <tr class ="table-warning">
-         <th>タグ</th>
-         <th>ステータス</th>
-         <th colspan ="2"></th>
-        </tr>
-       </thead>
-       <tbody>
-        <% @tags.each do |tag| %>
-        <tr>
-         <td><%= tag.name %></td>
-         <td>
-          <% if tag.status %>
-           <p class ="text-secondary">　非表示</p>
-          <% else %>
-           <p class ="text-primary">　表示</p>
+        <thead>
+          <tr class ="table-warning">
+            <th>タグ</th>
+            <th>ステータス</th>
+            <th colspan ="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.name %></td>
+            <td>
+              <% if tag.status %>
+                <p class ="text-secondary">　非表示</p>
+              <% else %>
+                <p class ="text-primary">　表示</p>
+              <% end %>
+            </td>
+            <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
+          </tr>
           <% end %>
-         </td>
-         <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class: "btn btn-success" %></td>
-        </tr>
-        <% end %>
-       </tbody>
+        </tbody>
       </table>
     </div>
   </div>

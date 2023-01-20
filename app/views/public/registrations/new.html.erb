@@ -7,28 +7,28 @@
 
       <div class ="field">
         <%= f.label :ユーザーネーム, class: "col-3 col-form-label offset-1 mt-1" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", size: "30" %>
       </div>
 
       <div class="field">
         <%= f.label :メールアドレス, class: "col-3 col-form-label offset-1 mt-1" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "30" %>
       </div>
 
       <div class="field">
         <%= f.label :password, "パスワード(6文字以上)", class: "col-3 col-form-label offset-1 mt-1" %>
         <% if @minimum_password_length %>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", size: "30" %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-3 col-form-label offset-1 mt-1" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", size: "30" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "新規登録", class: 'btn btn-success mt-4 offset-4' %>
+        <%= f.submit "新規登録", class: 'btn btn-success mt-4 offset-5' %>
       </div>
     <% end %>
   </div>
