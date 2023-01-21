@@ -1,6 +1,6 @@
 class Admin::CommentsController < ApplicationController
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order('id DESC').page(params[:page]).per(15)
   end
 
   def edit

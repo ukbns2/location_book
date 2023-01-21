@@ -32,12 +32,12 @@ class Public::PostsController < ApplicationController
     else
       all_posts = Post.where(is_draft: :false).includes(:tag)
     end
-    @posts = params[:tag_ids].present? ? Tag.find(params[:tag_ids]).posts : Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
+    @posts = params[:tag_ids].present? ? Tag.find(params[:tag_ids]).posts.order('id DESC').page(params[:page]).per(12) : Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
     #@posts = Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
     @all_posts_count = all_posts.count
   end
 
-    # 下書きも含めて全て表示
+    # 下書きも含めて全て表示（投稿一覧）
   def my_index
     @posts = current_user.posts.order('id DESC').page(params[:page]).per(12)
   end
@@ -46,8 +46,8 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+    #ロケ地詳細
   def detail
-    # ロケ地詳細
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
