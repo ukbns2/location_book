@@ -9,7 +9,7 @@ class Admin::HomesController < ApplicationController
     else
       all_posts = Post.where(is_draft: :false).includes(:tag)
     end
-    @posts = params[:tag_ids].present? ? Tag.find(params[:tag_ids]).posts.order('id DESC').page(params[:page]).per(12) : Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(15)
+    @posts = params[:tag_ids].present? ? Tag.find(params[:tag_ids]).posts.order('id DESC').page(params[:page]).per(15) : Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(15)
     #@posts = Post.where(is_draft: :false).order('id DESC').page(params[:page]).per(12)
     @all_posts_count = all_posts.count
   end
