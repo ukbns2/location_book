@@ -47,7 +47,7 @@
                   <% if post.image.attached? %>
                     <%= image_tag post.image, size: "50x50" %>
                   <% else %>
-                    <%= image_tag 'no-image', size: "50x50" %>
+                    <%= image_tag asset_path('no-image'), size: "50x50" %>
                   <% end %>
                 </td>
                 <td>
