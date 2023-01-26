@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
+    get 'search' => 'searches#search'
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
     resources :posts, only: [:show, :edit, :update, :destroy]
