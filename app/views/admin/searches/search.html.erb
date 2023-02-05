@@ -6,9 +6,9 @@
         <div class ="col-lg-3">
           <div>
             <% if post.image.attached? %>
-              <%= image_tag post.image, size: "200x200" %>
+              <%= image_tag post.image, class: 'search-img' %>
             <% else %>
-              <%= image_tag asset_path('no-image'), size: "200x200" %>
+              <%= image_tag asset_path('no-image'), class: 'search-img' %>
             <% end %>
           </div>
           <div>

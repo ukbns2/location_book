@@ -6,9 +6,9 @@
       <div>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></div>
       <div>
         <% if @post.image.attached? %>
-          <%= image_tag @post.image, size: "300x300" %>
+          <%= image_tag @post.image, class: 'admin_show-img' %>
         <% else %>
-          <%= image_tag asset_path('no-image'), size: "300x300" %>
+          <%= image_tag asset_path('no-image'), class: 'admin_show-img' %>
         <% end %>
       </div>
       <div class="d-flex">

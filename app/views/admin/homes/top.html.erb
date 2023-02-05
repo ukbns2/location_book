@@ -45,9 +45,9 @@
                 <td><%= l post.created_at, format: :short %></td>
                 <td>
                   <% if post.image.attached? %>
-                    <%= image_tag post.image, size: "50x50" %>
+                    <%= image_tag post.image, class: 'admin_top-img' %>
                   <% else %>
-                    <%= image_tag asset_path('no-image'), size: "50x50" %>
+                    <%= image_tag asset_path('no-image'), class: 'admin_top-img' %>
                   <% end %>
                 </td>
                 <td>
