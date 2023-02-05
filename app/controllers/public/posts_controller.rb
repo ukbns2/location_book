@@ -63,17 +63,24 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # 下書きから投稿へ
     if params[:go_draft]
-      @post.attributes = post_params.merge(is_draft: false)
+      @post.is_draft = false
       if @post.save(context: :publicize)
         redirect_to post_path(@post.id)
       else
-        @post.is_draft = true
         render :edit
       end
     # 投稿を更新
     elsif params[:update_post]
       @post.attributes = post_params
       if @post.save(context: :publicize)
+        redirect_to post_path(@post.id)
+      else
+        render :edit
+      end
+    # 下書きに戻す
+    elsif params[:return_post]
+      @post.is_draft = true
+      if @post.update(post_params)
         redirect_to post_path(@post.id)
       else
         render :edit

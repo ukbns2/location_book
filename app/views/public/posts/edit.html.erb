@@ -66,6 +66,7 @@
           <%= f.submit "変更を保存", :name => 'update_draft', class: "btn btn-secondary" %>
         <% else %>
           <%= f.submit "変更を保存", :name => 'update_post', class: "btn btn-success offset-md-4" %>
+          <%= f.submit "下書きに戻す", :name => 'return_post', class: "btn btn-secondary" %>
         <% end %>
       </div>
     <% end %>
